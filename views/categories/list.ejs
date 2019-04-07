@@ -1,0 +1,70 @@
+        <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+         Categories
+        </h1>
+       
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+
+
+<p>
+    <a href="/categories/create" class="btn btn-success">Add New</a>
+</p>
+
+<div class="box box-solid box-info">
+    <table class="table table-bordered" id="categoriesTable">
+    
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Icon</th>
+                <th>Remark</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <!-- data coming from server -->
+        </tbody>
+    
+    </table>
+</div>
+        
+   </section>
+</section>
+
+<link rel="stylesheet" type="text/css" href="/datatables/datatables.css">
+<script type="text/javascript" src="/datatables/datatables.js"></script>
+<script>
+    $("#categoriesTable").DataTable({
+        "processing": false,
+        "serverSide": false,
+        "ajax": {
+            "url": "/categories/getData",
+            "type": "POST",
+            "dataSrc":"data"
+        },
+        "columnDefs": [
+            {
+                "targets": 4,
+                "data": "id",
+                "render": function(data, type, row, meta) {
+                    var msg= "Are you sure to delete?";
+                    return '<a href="/categories/'+data+'/edit" class="btn btn-info btn-sm">Edit</a> &nbsp;'+
+                            '<a href="/categories/'+data+'/delete" onclick="return confirm(msg);" class="btn btn-danger btn-sm">Delete</a>';
+                }
+            }
+        ],
+        columns: [ 
+                { data : "id" },
+                { data : "title" },
+                { data : "icon" },
+                { data : "remark" },
+                { data : "id" }
+            ]
+    });
+</script>

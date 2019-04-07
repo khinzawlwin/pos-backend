@@ -1,0 +1,96 @@
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1> Create New Products </h1>
+</section>
+  
+<!-- Main content -->
+<section class="content">
+        <div class="box box-solid box-info">
+            <div class="box-body">
+                    <form action="/products/store" method="POST" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="">Name</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Enter Title"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="">Thumbnail</label>
+                                    <input type="file" name="thumbnail" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="">Category</label>
+                                    <input type="text" class="form-control" name="category_id" placeholder="Enter Category"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="">Kitchen</label>
+                                    <input type="text" class="form-control" name="kitchen_id" placeholder="Enter Kitchen"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="">Counting Unit</label>
+                                    <input type="text" class="form-control" name="counting_unit" placeholder="Enter Count Unit"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="">Price</label>
+                                    <input type="number" class="form-control" name="price" placeholder="Enter Price"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="">Code</label>
+                                    <input type="text" class="form-control" name="code" placeholder="Enter Price"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <label for="">Discount</label>
+                                    <input type="number" class="form-control" name="discount_amount" placeholder="Enter Discount"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="is_active" id="is_active" [(ngModel)]="product.is_active">
+                                    <label class="form-check-label" for="is_active">Is Active</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <label for="">Description</label>
+                                    <textarea name="description" rows="3" class="form-control" placeholder="Enter Description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success mr-5">Submit</button>
+                                    <a href="/products" class="btn btn-warning">Cancel</a>
+                                </div>
+                            </div>  
+                        </div>
+                    </form>
+            </div>
+        </div>   
+        
+</section>

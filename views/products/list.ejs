@@ -1,0 +1,80 @@
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+             Products
+            </h1>
+           
+          </section>
+      
+          <!-- Main content -->
+          <section class="content">
+    
+    
+    <p>
+        <a href="/products/create" class="btn btn-success">Add New</a>
+    </p>
+    
+    <div class="box box-solid box-info">
+        <table class="table table-bordered" id="productTable">
+        
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Thumbnail</th>
+                    <th>Category</th>
+                    <th>Kitchen</th>
+                    <th>Counting Unit</th>
+                    <th>Price</th>
+                    <th>Code</th>
+                    <th>Is Active</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                <!-- data coming from server -->
+            </tbody>
+        
+        </table>
+    </div>
+            
+       </section>
+    </section>
+    
+    <link rel="stylesheet" type="text/css" href="/datatables/datatables.css">
+    <script type="text/javascript" src="/datatables/datatables.js"></script>
+    <script>
+        $("#productTable").DataTable({
+            "processing": false,
+            "serverSide": false,
+            "ajax": {
+                "url": "/products/getData",
+                "type": "POST",
+                "dataSrc":"data"
+            },
+            "columnDefs": [
+                {
+                    "targets": 9,
+                    "data": "id",
+                    "render": function(data, type, row, meta) {
+                        var msg= "Are you sure to delete?";
+                        return '<a href="/products/'+data+'/edit" class="btn btn-info btn-sm">Edit</a> &nbsp;'+
+                                '<a href="/products/'+data+'/delete" onclick="return confirm(msg);" class="btn btn-danger btn-sm">Delete</a>';
+                    }
+                }
+            ],
+            columns: [ 
+                    { data : "id" },
+                    { data : "name" },
+                    { data : "thumbnail" },
+                    { data : "category_id" },
+                    { data : "kitchen_id" },
+                    { data : "counting_unit" },
+                    { data : "price" },
+                    { data : "code" },
+                    { data : "is_active" },
+                    { data : "id" }
+                ]
+        });
+    </script>

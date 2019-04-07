@@ -1,0 +1,70 @@
+        <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+         Townships
+        </h1>
+       
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+
+
+<p>
+    <a href="/townships/create" class="btn btn-success">Add New</a>
+</p>
+
+<div class="box box-solid box-info">
+    <table class="table table-bordered" id="townshipsTable">
+    
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Township EN</th>
+                <th>Township MM</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <!-- data coming from server -->
+        </tbody>
+    
+    </table>
+</div>
+        
+   </section>
+</section>
+
+<link rel="stylesheet" type="text/css" href="/datatables/datatables.css">
+<script type="text/javascript" src="/datatables/datatables.js"></script>
+<script>
+    $("#townshipsTable").DataTable({
+        "processing": false,
+        "serverSide": false,
+        "ajax": {
+            "url": "/townships/getData",
+            "type": "POST",
+            "dataSrc":"data"
+        },
+        "columnDefs": [
+            {
+                "targets": 4,
+                "data": "id",
+                "render": function(data, type, row, meta) {
+                    var msg= "Are you sure to delete?";
+                    return '<a href="/townships/'+data+'/edit" class="btn btn-info btn-sm">Edit</a> &nbsp;'+
+                            '<a href="/townships/'+data+'/delete" onclick="return confirm(msg);" class="btn btn-danger btn-sm">Delete</a>';
+                }
+            }
+        ],
+        columns: [ 
+                { data : "id" },
+                { data : "township_en" },
+                { data : "township_mm" },
+                { data : "city_id" },
+                { data : "id" }
+            ]
+    });
+</script>

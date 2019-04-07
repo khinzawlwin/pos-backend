@@ -1,0 +1,66 @@
+        <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+         Cities
+        </h1>
+       
+      </section>
+  
+      <!-- Main content -->
+      <section class="content">
+
+
+<p>
+    <a href="/cities/create" class="btn btn-success">Add New</a>
+</p>
+
+<div class="box box-solid box-info">
+    <table class="table table-bordered" id="citiesTable">
+    
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <!-- data coming from server -->
+        </tbody>
+    
+    </table>
+</div>
+        
+   </section>
+</section>
+
+<link rel="stylesheet" type="text/css" href="/datatables/datatables.css">
+<script type="text/javascript" src="/datatables/datatables.js"></script>
+<script>
+    $("#citiesTable").DataTable({
+        "processing": false,
+        "serverSide": false,
+        "ajax": {
+            "url": "/cities/getData",
+            "type": "POST",
+            "dataSrc":"data"
+        },
+        "columnDefs": [
+            {
+                "targets": 2,
+                "data": "id",
+                "render": function(data, type, row, meta) {
+                    var msg= "Are you sure to delete?";
+                    return '<a href="/cities/'+data+'/edit" class="btn btn-info btn-sm">Edit</a> &nbsp;'+
+                            '<a href="/cities/'+data+'/delete" onclick="return confirm(msg);" class="btn btn-danger btn-sm">Delete</a>';
+                }
+            }
+        ],
+        columns: [ 
+                { data : "id" },
+                { data : "city_name" },
+                { data : "id" }
+            ]
+    });
+</script>
